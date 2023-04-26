@@ -43,11 +43,12 @@ passport.deserializeUser(async function(id, done){
 
 //middleware for auth check
 passport.checkAuthentication = function (req, res, next) {
-    if (req.isAuthenticated) {
+  if (req.isAuthenticated()) {
       return next();
-    }
-    return res.redirect("/");
-}
+  }
+  return res.status(401).json({message: 'unauthorized'});
+};
+
 
 //for setting authenticated user in locals
 passport.setAuthenticatedUser = function (req, res, next) {
