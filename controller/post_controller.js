@@ -1,6 +1,21 @@
 const Post = require("../models/post");
 const Comment = require("../models/comments");
 const mongoose = require('mongoose');
+
+module.exports.getPost = async function(req, res){
+  try{
+    const post = await Post.findById(req.params.id);
+    if(!post){
+      return res.status(404).json({message: 'Post not found'});
+    }
+
+    return res.status(200).json({post});
+  }catch(err){
+    console.log(err);
+    return res.status(500).json({message: 'Internal server error'});
+  }
+}
+
 module.exports.createPost = async function (req, res) {
   try {
     const newPost = await Post.create({

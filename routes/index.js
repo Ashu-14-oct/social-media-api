@@ -14,8 +14,13 @@ router.post('/sign-in', passport.authenticate('local', {failureRedirect: '/'}),u
 router.get('/sign-out', userController.signOut);
 
 //Post
+router.get('/get-post/:id', postController.getPost);
 router.post('/create-post', passport.checkAuthentication,postController.createPost);
 router.delete('/delete-post/:id', passport.checkAuthentication,postController.deletePost);
 router.put('/update-post/:id',  passport.checkAuthentication, postController.updatePost);
+
+//comment
+router.get('/get-comment/:id', commentController.getComment);
+router.post('/create-comment/:id', passport.checkAuthentication, commentController.postComment);
 
 module.exports = router;
