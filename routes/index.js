@@ -22,5 +22,7 @@ router.put('/update-post/:id',  passport.checkAuthentication, postController.upd
 //comment
 router.get('/get-comment/:id', commentController.getComment);
 router.post('/create-comment/:id', passport.checkAuthentication, commentController.postComment);
+router.delete('/delete-comment/:id',passport.checkAuthentication,commentController.deleteComment);
+router.put('/update-comment/:id', passport.checkAuthentication, commentController.updateComment);
 
 module.exports = router;
