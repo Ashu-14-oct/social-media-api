@@ -25,4 +25,8 @@ router.post('/create-comment/:id', passport.checkAuthentication, commentControll
 router.delete('/delete-comment/:id',passport.checkAuthentication,commentController.deleteComment);
 router.put('/update-comment/:id', passport.checkAuthentication, commentController.updateComment);
 
+//user to follow or unfollow
+router.post('/follow/:id',passport.checkAuthentication, userController.followUser);
+router.post('/unfollow/:id', passport.checkAuthentication, userController.unfollowUser);
+
 module.exports = router;
